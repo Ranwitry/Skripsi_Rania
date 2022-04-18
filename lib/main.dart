@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skripsi_rania/logins_page.dart';
+import 'package:skripsi_rania/login/logins_page.dart';
 
 void main() {
   runApp(MyApp());
