@@ -128,6 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Padding(
                         padding: EdgeInsets.only(top: 10, left: 20, right: 20),
                         child: TextFormField(
+                          readOnly: true,
                           initialValue: "raniajiminie@gmail.com",
                           decoration: InputDecoration(
                               contentPadding:

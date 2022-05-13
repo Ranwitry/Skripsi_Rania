@@ -330,10 +330,7 @@ void _validasi1(context) {
                     );
                     final snackBar = SnackBar(
                       content: const Text('User berhasil ditambahkan!'),
-                      action: SnackBarAction(
-                        label: 'Undo',
-                        onPressed: () {},
-                      ),
+                    
                     );
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },

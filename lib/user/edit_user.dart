@@ -56,6 +56,18 @@ dropdownValue = widget.user['jenisu'];
             FocusScope.of(context).requestFocus(new FocusNode());
           },
         ),
+        actions :[
+            IconButton(
+              icon: Icon(
+                Icons.delete_forever_sharp,
+                color: Colors.white,
+                size: 30,
+              ),
+              onPressed: () {
+                _hapusUser(context);
+              },
+            ),
+        ]
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -296,11 +308,11 @@ dropdownValue = widget.user['jenisu'];
                               borderRadius: BorderRadius.circular(20))),
                       onPressed: () {
                         if (_tambahKey.currentState!.validate()) {
-                          //_validasi1(context);
+                        
                         }
                       },
                       child: Text(
-                        "Tambah",
+                        "Edit",
                         style: TextStyle(color: Colors.white),
                       ),
                     )),
@@ -313,54 +325,47 @@ dropdownValue = widget.user['jenisu'];
   }
 }
 
-// void _validasi1(context) {
-//   showDialog(
-//       context: context,
-//       barrierDismissible: false,
-//       builder: (BuildContext context) => AlertDialog(
-//             shape:
-//                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-//             elevation: 24,
-//             title: const Text(
-//               "Tambah User",
-//               textAlign: TextAlign.center,
-//               style: TextStyle(fontFamily: "NunitoSans"),
-//             ),
-//             content: const Text(
-//               "Apakah data user yang anda tambahkan sudah sesuai? ",
-//               style: TextStyle(fontFamily: "NunitoSans"),
-//             ),
-//             actions: <Widget>[
-//               TextButton(
-//                 style: TextButton.styleFrom(backgroundColor: Color(0xffE5E5E5)),
-//                 onPressed: () => Navigator.pop(context, 'Cancel'),
-//                 child: const Text("Batal",
-//                     style: TextStyle(
-//                         fontFamily: "NunitoSans", color: Colors.black)),
-//               ),
-//               TextButton(
-//                   style:
-//                       TextButton.styleFrom(backgroundColor: Color(0xffDF9A9A)),
-//                   onPressed: () {
-//                     int count = 0;
-//                     Navigator.popUntil(context, (route) {
-//                       return count++ == 2;
-//                     });
-//                     Navigator.of(context).pushReplacement(
-//                       MaterialPageRoute(builder: (context) => ListUser()),
-//                     );
-//                     final snackBar = SnackBar(
-//                       content: const Text('User berhasil ditambahkan!'),
-//                       action: SnackBarAction(
-//                         label: 'Undo',
-//                         onPressed: () {},
-//                       ),
-//                     );
-//                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-//                   },
-//                   child: const Text('OK',
-//                       style: TextStyle(
-//                           fontFamily: "NunitoSans", color: Colors.white)))
-//             ],
-//           ));
-// }
+void _hapusUser(context){
+
+showDialog(context: context,
+barrierDismissible: false,
+ builder: (BuildContext context) => AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            elevation: 24,
+            content: const Text(
+              "Apakah anda yakin menghapus user ini? ",
+              style: TextStyle(fontFamily: "NunitoSans"),
+            ),
+            actions: <Widget>[
+              TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Color(0xffDF9A9A),
+                ),
+                          onPressed: () {
+                      int count = 0;
+                      Navigator.popUntil(context, (route) {
+                        return count++ == 1;
+                      });
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => ListUser()),
+                      );
+                    },
+                child: const Text(
+                  'Ya',
+                  style: TextStyle(
+                    fontFamily: "NunitoSans",
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(backgroundColor: Color(0xffE5E5E5)),
+                onPressed: () => Navigator.pop(context, 'Cancel'),
+                child: const Text("Tidak",
+                    style: TextStyle(
+                        fontFamily: "NunitoSans", color: Colors.black)),
+              ),
+            ],
+          ));
+}
